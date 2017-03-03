@@ -1,20 +1,14 @@
-import React, { Component } from 'react';
- 
-import Task from './Task.jsx';
+import React, { Component, PropTypes } from 'react';
+import { createContainer } from 'meteor/react-meteor-data';
+import { SeriesList } from '../api/seriesList.js'; 
+import Series from './Series.jsx';
  
 // App component - represents the whole app
-export default class App extends Component {
-  getTasks() {
-    return [
-      { _id: 1, text: 'This is task 1' },
-      { _id: 2, text: 'This is task 2' },
-      { _id: 3, text: 'This is task 3' },
-    ];
-  }
+class App extends Component {
  
-  renderTasks() {
-    return this.getTasks().map((task) => (
-      <Task key={task._id} task={task} />
+  renderSeries() {
+    return this.props.seriesList.map((ser) => (
+      <Series key={ser._id} ser={ser} />
     ));
   }
  
@@ -22,13 +16,23 @@ export default class App extends Component {
     return (
       <div className="container">
         <header>
-          <h1>Todo List</h1>
+          <h1>Series Tracker</h1>
         </header>
  
         <ul>
-          {this.renderTasks()}
+          {this.renderSeries()}
         </ul>
       </div>
     );
   }
 }
+
+App.propTypes = {
+  seriesList: PropTypes.array.isRequired,
+};
+ 
+export default createContainer(() => {
+  return {
+    seriesList: SeriesList.find({}).fetch(),
+  };
+}, App);
