@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
  
-export default class Series extends Component {
+export default class CatEach extends Component {
   render() {
     return (
       <li>{this.props.ser.author}, {this.props.ser.seriesTitle}</li>
@@ -8,6 +8,6 @@ export default class Series extends Component {
   }
 }
  
-Series.propTypes = {
+CatEach.propTypes = {
   ser: PropTypes.object.isRequired,
 };
