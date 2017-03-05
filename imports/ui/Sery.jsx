@@ -1,14 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import { SeriesList } from '../api/seriesList.js'; 
-import CatEach from './CatEach.jsx';
+import SeryEach from './SeryEach.jsx';
  
 // App component - represents the whole app
-export default class Catalog extends Component {
+export default class Sery extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      authorInput: '',
-      seriesInput: ''
+      titleInput: '',
+      yearInput: ''
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,45 +21,48 @@ export default class Catalog extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const addAuthor = this.state.authorInput;
-    const addSeries = this.state.seriesInput;
+    const addTitle = this.state.titleInput;
+    const addYear = this.state.yearInput;
     SeriesList.insert({
       author: addAuthor,
-      seriesTitle: addSeries,
-      volumes: {}
+      seriesTitle: addSeries
     });
-    this.setState({authorInput: '', seriesInput: ''})
+    this.setState({titleInput: '', yearInput: ''})
   }
 
-  renderSeries() {
-    return this.props.seriesList.map((ser) => (
-      <CatEach
-        key={ser._id}
-        ser={ser}
-        changeDisplay={(str) => this.props.changeDisplay(str)}
-      />
-    ));
+  renderBooks() {
+    if (this.props.onDisplay === "front") {
+      return <h1>Series Tracker Home</h1>;
+    } else {
+      let seriesLive = this.props.seriesList.find(x => x._id === this.props.onDisplay);
+      let volumes = seriesLive['volumes'];
+      console.log(volumes);
+      // return seriesLive.map((book) => (
+      //   <SeryEach key={book._id} book={book} />
+      // ));
+    }
+
   }
  
   render() {
     return (
-      <div className="catalog">
+      <div className="sery">
  
         <ul>
-          {this.renderSeries()}
+          {this.renderBooks()}
         </ul>
 
         <form className="new-task" onSubmit={this.handleSubmit} >
           <input
             type="text"
-            name="authorInput"
-            value={this.state.authorInput}
+            name="titleInput"
+            value={this.state.titleInput}
             onChange={this.handleInputChange}
           />
           <input
             type="text"
-            name="seriesInput"
-            value={this.state.seriesInput}
+            name="yearInput"
+            value={this.state.yearInput}
             onChange={this.handleInputChange}
           />
           <input
@@ -72,6 +75,6 @@ export default class Catalog extends Component {
   }
 }
 
-Catalog.propTypes = {
+Sery.propTypes = {
   seriesList: PropTypes.array.isRequired,
 };
