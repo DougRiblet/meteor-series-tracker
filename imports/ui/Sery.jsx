@@ -26,7 +26,7 @@ export default class Sery extends Component {
     console.log(this.props.onDisplay);
     SeriesList.update(
       {_id: this.props.onDisplay},
-      {$addToSet: {volumes: {title: addTitle, year: addYear}}}
+      {$addToSet: {volumes: {title: addTitle, year: addYear, haveRead: false}}}
     );
     this.setState({titleInput: '', yearInput: ''})
   }
@@ -63,12 +63,14 @@ export default class Sery extends Component {
         </ul>
 
         <form className="new-book" onSubmit={this.handleSubmit} >
+          <label>Title:</label>
           <input
             type="text"
             name="titleInput"
             value={this.state.titleInput}
             onChange={this.handleInputChange}
           />
+          <label>Year:</label>
           <input
             type="text"
             name="yearInput"

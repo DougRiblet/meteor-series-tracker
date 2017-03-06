@@ -50,12 +50,14 @@ export default class Catalog extends Component {
         </ul>
 
         <form className="new-series" onSubmit={this.handleSubmit} >
+          <label>Author:</label>
           <input
             type="text"
             name="authorInput"
             value={this.state.authorInput}
             onChange={this.handleInputChange}
           />
+          <label>Series:</label>
           <input
             type="text"
             name="seriesInput"
