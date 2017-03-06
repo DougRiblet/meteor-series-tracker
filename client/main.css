@@ -62,7 +62,7 @@ form {
   position: relative;
 }
  
-.new-task input {
+.new-series input {
   box-sizing: border-box;
   padding: 10px;
   background: transparent;
@@ -72,7 +72,21 @@ form {
   font-size: 1em;
 }
  
-.new-task input:focus{
+.new-series input:focus{
+  outline: 0;
+}
+ 
+.new-book input {
+  box-sizing: border-box;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid lightgray;
+  width: 100%;
+  margin: 6px 0px;
+  font-size: 1em;
+}
+ 
+.new-book input:focus{
   outline: 0;
 }
  

@@ -26,7 +26,7 @@ export default class Catalog extends Component {
     SeriesList.insert({
       author: addAuthor,
       seriesTitle: addSeries,
-      volumes: {}
+      volumes: []
     });
     this.setState({authorInput: '', seriesInput: ''})
   }
@@ -49,7 +49,7 @@ export default class Catalog extends Component {
           {this.renderSeries()}
         </ul>
 
-        <form className="new-task" onSubmit={this.handleSubmit} >
+        <form className="new-series" onSubmit={this.handleSubmit} >
           <input
             type="text"
             name="authorInput"

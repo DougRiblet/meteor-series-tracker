@@ -23,10 +23,11 @@ export default class Sery extends Component {
     event.preventDefault();
     const addTitle = this.state.titleInput;
     const addYear = this.state.yearInput;
-    SeriesList.insert({
-      author: addAuthor,
-      seriesTitle: addSeries
-    });
+    console.log(this.props.onDisplay);
+    SeriesList.update(
+      {_id: this.props.onDisplay},
+      {$addToSet: {volumes: {title: addTitle, year: addYear}}}
+    );
     this.setState({titleInput: '', yearInput: ''})
   }
 
@@ -36,10 +37,9 @@ export default class Sery extends Component {
     } else {
       let seriesLive = this.props.seriesList.find(x => x._id === this.props.onDisplay);
       let volumes = seriesLive['volumes'];
-      console.log(volumes);
-      // return seriesLive.map((book) => (
-      //   <SeryEach key={book._id} book={book} />
-      // ));
+      return volumes.map((book) => (
+        <SeryEach key={book._id} book={book} />
+      ));
     }
 
   }
@@ -52,7 +52,7 @@ export default class Sery extends Component {
           {this.renderBooks()}
         </ul>
 
-        <form className="new-task" onSubmit={this.handleSubmit} >
+        <form className="new-book" onSubmit={this.handleSubmit} >
           <input
             type="text"
             name="titleInput"
