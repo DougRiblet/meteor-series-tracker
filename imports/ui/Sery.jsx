@@ -33,7 +33,7 @@ export default class Sery extends Component {
 
   renderBooks() {
     if (this.props.onDisplay === "front") {
-      return <h1>Series Tracker Home</h1>;
+      return <li></li>;
     } else {
       let seriesLive = this.props.seriesList.find(x => x._id === this.props.onDisplay);
       let volumes = seriesLive['volumes'];
@@ -41,13 +41,23 @@ export default class Sery extends Component {
         <SeryEach key={book._id} book={book} />
       ));
     }
+  }
 
+  renderSeryTitle() {
+    if (this.props.onDisplay === "front") {
+      return `Series Tracker App`;
+    } else {
+      let seriesLive = this.props.seriesList.find(x => x._id === this.props.onDisplay);
+      return `${seriesLive.seriesTitle} by ${seriesLive.author}`;
+    }
   }
  
   render() {
     return (
       <div className="sery">
- 
+
+        <h1 className="seryTitle">{this.renderSeryTitle()}</h1>
+
         <ul>
           {this.renderBooks()}
         </ul>
