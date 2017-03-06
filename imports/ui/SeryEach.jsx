@@ -2,9 +2,13 @@ import React, { Component, PropTypes } from 'react';
  
 export default class SeryEach extends Component {
   render() {
-    let haveRead = this.props.book.haveRead ? `yes` : `no` ;
+    let haveRead = this.props.book.haveRead ? `fa fa-check` : `fa fa-asterisk` ;
     return (
-      <li>{haveRead} {this.props.book.title}, {this.props.book.year}</li>
+      <li>
+        <i className={haveRead}></i> &nbsp; 
+        {this.props.book.title}, 
+        {this.props.book.year}
+      </li>
     );
   }
 }
