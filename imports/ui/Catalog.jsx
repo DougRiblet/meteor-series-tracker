@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Meteor } from 'meteor/meteor';
 import { SeriesList } from '../api/seriesList.js'; 
 import CatEach from './CatEach.jsx';
 
@@ -25,7 +26,9 @@ export default class Catalog extends Component {
     SeriesList.insert({
       author: addAuthor,
       seriesTitle: addSeries,
-      volumes: []
+      volumes: [],
+      owner: Meteor.userId(),
+      username: Meteor.user().username
     });
     this.setState({authorInput: '', seriesInput: ''})
   }
@@ -48,26 +51,29 @@ export default class Catalog extends Component {
           {this.renderSeries()}
         </ul>
 
-        <form className="new-series" onSubmit={this.handleSubmit} >
-          <label>Author:</label>
-          <input
-            type="text"
-            name="authorInput"
-            value={this.state.authorInput}
-            onChange={this.handleInputChange}
-          />
-          <label>Series:</label>
-          <input
-            type="text"
-            name="seriesInput"
-            value={this.state.seriesInput}
-            onChange={this.handleInputChange}
-          />
-          <input
-            type="submit"
-            value="Submit"
-          />
-        </form>
+        { this.props.currentUser ?
+          <form className="new-series" onSubmit={this.handleSubmit} >
+            <label>Author:</label>
+            <input
+              type="text"
+              name="authorInput"
+              value={this.state.authorInput}
+              onChange={this.handleInputChange}
+            />
+            <label>Series:</label>
+            <input
+              type="text"
+              name="seriesInput"
+              value={this.state.seriesInput}
+              onChange={this.handleInputChange}
+            />
+            <input
+              type="submit"
+              value="Submit"
+            />
+          </form> : ''
+        }
+
       </div>
     );
   }
@@ -75,4 +81,5 @@ export default class Catalog extends Component {
 
 Catalog.propTypes = {
   seriesList: PropTypes.array.isRequired,
+  currentUser: PropTypes.object
 };

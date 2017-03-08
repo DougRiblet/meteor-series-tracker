@@ -44,7 +44,7 @@ export default class Sery extends Component {
       return <li></li>;
     } else {
       let seriesLive = this.props.seriesList.find(x => x._id === this.props.onDisplay);
-      let volumes = seriesLive['volumes'];
+      let volumes = seriesLive['volumes'].sort((x,y) => x.year - y.year);
       return volumes.map((book) => (
         <SeryEach key={book.title} book={book} onDisplay={this.props.onDisplay} />
       ));
@@ -70,26 +70,28 @@ export default class Sery extends Component {
           {this.renderBooks()}
         </ul>
 
-        <form className="new-book" onSubmit={this.handleSubmit} >
-          <label>Title:</label>
-          <input
-            type="text"
-            name="titleInput"
-            value={this.state.titleInput}
-            onChange={this.handleInputChange}
-          />
-          <label>Year:</label>
-          <input
-            type="text"
-            name="yearInput"
-            value={this.state.yearInput}
-            onChange={this.handleInputChange}
-          />
-          <input
-            type="submit"
-            value="Submit"
-          />
-        </form>
+        { this.props.currentUser ?
+          <form className="new-book" onSubmit={this.handleSubmit} >
+            <label>Title:</label>
+            <input
+              type="text"
+              name="titleInput"
+              value={this.state.titleInput}
+              onChange={this.handleInputChange}
+            />
+            <label>Year:</label>
+            <input
+              type="text"
+              name="yearInput"
+              value={this.state.yearInput}
+              onChange={this.handleInputChange}
+            />
+            <input
+              type="submit"
+              value="Submit"
+            />
+          </form> : ''
+        }
       </div>
     );
   }
@@ -97,4 +99,5 @@ export default class Sery extends Component {
 
 Sery.propTypes = {
   seriesList: PropTypes.array.isRequired,
+  currentUser: PropTypes.object
 };
