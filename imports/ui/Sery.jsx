@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
+import { Meteor } from 'meteor/meteor';
 import { SeriesList } from '../api/seriesList.js'; 
 import SeryEach from './SeryEach.jsx';
- 
-// App component - represents the whole app
+
 export default class Sery extends Component {
   constructor(props) {
     super(props);
@@ -23,10 +23,18 @@ export default class Sery extends Component {
     event.preventDefault();
     const addTitle = this.state.titleInput;
     const addYear = this.state.yearInput;
-    console.log(this.props.onDisplay);
     SeriesList.update(
       {_id: this.props.onDisplay},
-      {$addToSet: {volumes: {title: addTitle, year: addYear, haveRead: false}}}
+      {$addToSet: 
+        {volumes: 
+          {
+            _id: new Meteor.Collection.ObjectID(),
+            title: addTitle,
+            year: addYear,
+            haveRead: false
+          }
+        }
+      }
     );
     this.setState({titleInput: '', yearInput: ''})
   }
@@ -38,7 +46,7 @@ export default class Sery extends Component {
       let seriesLive = this.props.seriesList.find(x => x._id === this.props.onDisplay);
       let volumes = seriesLive['volumes'];
       return volumes.map((book) => (
-        <SeryEach key={book._id} book={book} />
+        <SeryEach key={book.title} book={book} onDisplay={this.props.onDisplay} />
       ));
     }
   }

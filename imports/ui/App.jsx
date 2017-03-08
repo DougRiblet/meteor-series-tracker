@@ -4,7 +4,6 @@ import { SeriesList } from '../api/seriesList.js';
 import Catalog from './Catalog.jsx';
 import Sery from './Sery.jsx';
  
-// App component - represents the whole app
 class App extends Component {
   constructor() {
     super();

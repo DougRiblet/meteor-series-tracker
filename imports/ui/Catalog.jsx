@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { SeriesList } from '../api/seriesList.js'; 
 import CatEach from './CatEach.jsx';
- 
-// App component - represents the whole app
+
 export default class Catalog extends Component {
   constructor(props) {
     super(props);
