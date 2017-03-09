@@ -34,7 +34,6 @@ Meteor.methods({
       {$addToSet: 
         {volumes: 
           {
-            _id: new Meteor.Collection.ObjectID(),
             title,
             year,
             haveRead: false
@@ -42,5 +41,18 @@ Meteor.methods({
         }
       }
     );
+  },
+  'seriesList.updateHaveRead'(seriesID, volumeTitle, newHaveRead) {
+    check(newHaveRead, Boolean);
+
+    if (! this.userId) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+    SeriesList.update(
+      {_id: seriesID, "volumes.title": volumeTitle},
+      {$set: {"volumes.$.haveRead": newHaveRead}}
+    );
+
   }
 });

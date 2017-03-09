@@ -9,11 +9,10 @@ export default class SeryEach extends Component {
   }
 
   handleIconClick() {
-    let opposite = !this.props.book.haveRead
-    SeriesList.update(
-      {_id: this.props.onDisplay, "volumes._id": this.props.book._id},
-      {$set: {"volumes.$.haveRead": opposite}}
-    );
+    const newHaveRead = !this.props.book.haveRead;
+    const seriesID = this.props.onDisplay;
+    const volumeTitle = this.props.book.title;
+    Meteor.call('seriesList.updateHaveRead', seriesID, volumeTitle, newHaveRead);
   }
 
   render() {
