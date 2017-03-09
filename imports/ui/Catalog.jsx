@@ -23,13 +23,7 @@ export default class Catalog extends Component {
     event.preventDefault();
     const addAuthor = this.state.authorInput;
     const addSeries = this.state.seriesInput;
-    SeriesList.insert({
-      author: addAuthor,
-      seriesTitle: addSeries,
-      volumes: [],
-      owner: Meteor.userId(),
-      username: Meteor.user().username
-    });
+    Meteor.call('seriesList.insertSeries', addAuthor, addSeries);
     this.setState({authorInput: '', seriesInput: ''})
   }
 

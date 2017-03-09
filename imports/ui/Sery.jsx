@@ -21,21 +21,10 @@ export default class Sery extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    const seriesID = this.props.onDisplay;
     const addTitle = this.state.titleInput;
     const addYear = this.state.yearInput;
-    SeriesList.update(
-      {_id: this.props.onDisplay},
-      {$addToSet: 
-        {volumes: 
-          {
-            _id: new Meteor.Collection.ObjectID(),
-            title: addTitle,
-            year: addYear,
-            haveRead: false
-          }
-        }
-      }
-    );
+    Meteor.call('seriesList.insertVolume', seriesID, addTitle, addYear);
     this.setState({titleInput: '', yearInput: ''})
   }
 
