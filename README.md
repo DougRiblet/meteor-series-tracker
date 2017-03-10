@@ -1,4 +1,4 @@
-## Roguelike Dungeon Crawler
+## Series Tracker
 
 App to track your progress in book series. Add series, add titles to a series, mark which titles you've read or haven't read yet.
 
