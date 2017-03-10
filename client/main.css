@@ -49,6 +49,13 @@ header {
 #login-buttons {
   display: inline-block;
   float: right;
+  color: #bcd;
+  font-size: 1em;
+}
+
+#login-buttons a {
+  text-decoration: none;
+  cursor: pointer;
 }
 
 h1 {
