@@ -9,6 +9,7 @@ Follow these steps to run:
 3. run "meteor npm install" on the command line,
 4. run "meteor" on the command line,
 5. open localhost:3000 in your browser
+6. login required to enable functionality
 
 Created by Doug Riblet | <https://github.com/smashzen>
 

@@ -29,7 +29,6 @@ body {
   padding: 12px;
   margin: 12px 2px;
   float: left;
-  border: 1px solid lightblue;
 }
 
 .sery {
@@ -37,7 +36,7 @@ body {
   margin: 12px 2px;
   padding: 12px;
   float: left;
-  border: 1px solid lightgreen;
+  border-left: 2px solid #2c4959;
 }
 
 header {
@@ -119,7 +118,6 @@ li {
   position: relative;
   list-style: none;
   padding: 15px;
-  border-bottom: #eee solid 1px;
 }
  
 li .text {
