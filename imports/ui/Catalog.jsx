@@ -8,8 +8,10 @@ export default class Catalog extends Component {
     super(props);
     this.state = {
       authorInput: '',
-      seriesInput: ''
+      seriesInput: '',
+      showAddSeries: false
     };
+    this.toggleShowAddSeries = this.toggleShowAddSeries.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -27,6 +29,10 @@ export default class Catalog extends Component {
     this.setState({authorInput: '', seriesInput: ''})
   }
 
+  toggleShowAddSeries() {
+    this.setState({showAddSeries: !this.state.showAddSeries})
+  }
+
   renderSeries() {
     return this.props.seriesList.map((ser) => (
       <CatEach
@@ -38,6 +44,8 @@ export default class Catalog extends Component {
   }
  
   render() {
+    let caret = this.state.showAddSeries ? `fa fa-caret-down` : `fa fa-caret-up`;
+
     return (
       <div className="catalog">
  
@@ -46,6 +54,12 @@ export default class Catalog extends Component {
         </ul>
 
         { this.props.currentUser ?
+          <p className="addFormHead" onClick={this.toggleShowAddSeries}>
+            Add New Series <i className={caret}></i>
+          </p>: ''
+        }
+
+        { this.props.currentUser && this.state.showAddSeries ?
           <form className="new-series" onSubmit={this.handleSubmit} >
             <label>Author:</label>
             <input
