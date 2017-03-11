@@ -14,7 +14,8 @@ export default class CatEach extends Component {
   render() {
     return (
       <li onClick={this.handleClick}>
-        {this.props.ser.author}<br />{this.props.ser.seriesTitle}
+        <span className="seriesTitle">{this.props.ser.seriesTitle}</span><br />
+        {this.props.ser.author}
       </li>
     );
   }

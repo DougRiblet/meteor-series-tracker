@@ -21,8 +21,8 @@ export default class SeryEach extends Component {
       <li>
         <span onClick={this.handleIconClick}>
           <i className={haveRead}></i>
-        </span> &nbsp; 
-        {this.props.book.title}, {this.props.book.year}
+        </span>
+        <span className="bookTitle">{this.props.book.title}</span> {this.props.book.year}
       </li>
     );
   }

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Muli:400,900');
+@import url('https://fonts.googleapis.com/css?family=Muli:400,600,900');
 
 body {
   font-family: 'Muli', sans-serif;
@@ -31,6 +31,11 @@ body {
   float: left;
 }
 
+.seriesTitle {
+  font-weight: 600;
+  font-size: 18px;
+}
+
 .sery {
   width: 60%;
   margin: 12px 2px;
@@ -40,8 +45,21 @@ body {
   border-left: 2px solid #2c4959;
 }
 
-.addFormHead {
+.fa-check, .fa-asterisk {
+  width: 2em;
+}
+.bookTitle {
+  font-weight: 600;
+  font-size: 18px;
+  margin-right: .5em;
+}
+
+.addFormP {
   margin-left: 1.25em;
+  margin-top: 3em;
+}
+
+.addFormHead {
   cursor: pointer;
   color: #777;
   border-top: 1px solid #777;
