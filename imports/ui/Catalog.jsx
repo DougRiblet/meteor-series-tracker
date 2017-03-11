@@ -61,18 +61,18 @@ export default class Catalog extends Component {
 
         { this.props.currentUser && this.state.showAddSeries ?
           <form className="new-series" onSubmit={this.handleSubmit} >
-            <label>Author:</label>
-            <input
-              type="text"
-              name="authorInput"
-              value={this.state.authorInput}
-              onChange={this.handleInputChange}
-            />
-            <label>Series:</label>
             <input
               type="text"
               name="seriesInput"
+              placeholder="Series Title"
               value={this.state.seriesInput}
+              onChange={this.handleInputChange}
+            />
+            <input
+              type="text"
+              name="authorInput"
+              placeholder="Author"
+              value={this.state.authorInput}
               onChange={this.handleInputChange}
             />
             <input
