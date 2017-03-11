@@ -78,7 +78,7 @@ form {
  
 .new-series input {
   box-sizing: border-box;
-  padding: 10px;
+  padding: 5px 10px;
   background: transparent;
   border: 1px solid lightgray;
   width: 100%;
@@ -92,7 +92,7 @@ form {
  
 .new-book input {
   box-sizing: border-box;
-  padding: 10px;
+  padding: 5px 10px;
   background: transparent;
   border: 1px solid lightgray;
   width: 100%;
@@ -129,27 +129,6 @@ li .text {
   margin-left: 10px;
 }
  
-li.checked {
-  color: #888;
-}
- 
-li.checked .text {
-  text-decoration: line-through;
-}
- 
-li.private {
-  background: #eee;
-  border-color: #ddd;
-}
- 
-header .hide-completed {
-  float: right;
-}
- 
-.toggle-private {
-  margin-left: 5px;
-}
- 
 @media (max-width: 600px) {
   li {
     padding: 12px 15px;
@@ -160,7 +139,10 @@ header .hide-completed {
     clear: both;
   }
  
-  .new-task input {
+  .new-series input {
+    padding-bottom: 5px;
+  }
+  .new-book input {
     padding-bottom: 5px;
   }
 }
