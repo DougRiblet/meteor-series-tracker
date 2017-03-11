@@ -47,6 +47,7 @@ body {
 
 .fa-check, .fa-asterisk {
   width: 2em;
+  cursor: pointer;
 }
 .bookTitle {
   font-weight: 600;
