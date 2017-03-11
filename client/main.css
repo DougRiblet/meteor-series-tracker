@@ -36,7 +36,12 @@ body {
   margin: 12px 2px;
   padding: 12px;
   float: left;
+  min-height: 70vh;
   border-left: 2px solid #2c4959;
+}
+
+.addFormHead {
+  cursor: pointer;
 }
 
 header {

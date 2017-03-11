@@ -8,8 +8,10 @@ export default class Sery extends Component {
     super(props);
     this.state = {
       titleInput: '',
-      yearInput: ''
+      yearInput: '',
+      showAddTitle: false
     };
+    this.toggleShowAddTitle = this.toggleShowAddTitle.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -48,8 +50,14 @@ export default class Sery extends Component {
       return `${seriesLive.seriesTitle} by ${seriesLive.author}`;
     }
   }
+
+  toggleShowAddTitle() {
+    this.setState({showAddTitle: !this.state.showAddTitle})
+  }
  
   render() {
+    let caret = this.state.showAddTitle ? `fa fa-caret-down` : `fa fa-caret-up`;
+
     return (
       <div className="sery">
 
@@ -58,8 +66,14 @@ export default class Sery extends Component {
         <ul>
           {this.renderBooks()}
         </ul>
-
+        
         { this.props.currentUser ?
+          <p className="addFormHead" onClick={this.toggleShowAddTitle}>
+            Add New Title <i className={caret}></i>
+          </p>: ''
+        }
+
+        { this.props.currentUser && this.state.showAddTitle ?
           <form className="new-book" onSubmit={this.handleSubmit} >
             <label>Title:</label>
             <input
