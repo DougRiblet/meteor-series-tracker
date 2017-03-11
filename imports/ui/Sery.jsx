@@ -68,9 +68,9 @@ export default class Sery extends Component {
         </ul>
         
         { this.props.currentUser ?
-          <p className="addFormHead" onClick={this.toggleShowAddTitle}>
+          <p><span className="addFormHead" onClick={this.toggleShowAddTitle}>
             Add New Title <i className={caret}></i>
-          </p>: ''
+          </span></p>: ''
         }
 
         { this.props.currentUser && this.state.showAddTitle ?

@@ -54,9 +54,9 @@ export default class Catalog extends Component {
         </ul>
 
         { this.props.currentUser ?
-          <p className="addFormHead" onClick={this.toggleShowAddSeries}>
+          <p><span className="addFormHead" onClick={this.toggleShowAddSeries}>
             Add New Series <i className={caret}></i>
-          </p>: ''
+          </span></p>: ''
         }
 
         { this.props.currentUser && this.state.showAddSeries ?

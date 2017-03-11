@@ -41,7 +41,11 @@ body {
 }
 
 .addFormHead {
+  margin-left: 1.25em;
   cursor: pointer;
+  color: #777;
+  border-top: 1px solid #777;
+  border-bottom: 1px solid #777;
 }
 
 header {
