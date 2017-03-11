@@ -75,17 +75,17 @@ export default class Sery extends Component {
 
         { this.props.currentUser && this.state.showAddTitle ?
           <form className="new-book" onSubmit={this.handleSubmit} >
-            <label>Title:</label>
             <input
               type="text"
               name="titleInput"
+              placeholder="Book Title"
               value={this.state.titleInput}
               onChange={this.handleInputChange}
             />
-            <label>Year:</label>
             <input
               type="text"
               name="yearInput"
+              placeholder="Year of Publication"
               value={this.state.yearInput}
               onChange={this.handleInputChange}
             />
