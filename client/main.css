@@ -49,6 +49,8 @@ body {
   display: block;
   margin: 0;
   padding: 6px 12px;
+  position: relative;
+  list-style: none;
 }
 
 .hrow {
@@ -119,12 +121,13 @@ h1.seryTitle {
   font-weight: 900;
   color: #416174;
   margin-bottom: 0em;
-  margin-top: .5em;
+  margin-top: .25em;
 }
 
 h2.seryAuthor {
   font-weight: 600;
   margin-top: 0em;
+  margin-bottom: 1em;
 }
  
 form {
@@ -193,7 +196,7 @@ ul {
 li {
   position: relative;
   list-style: none;
-  padding: 15px;
+  padding: 12px;
 }
  
 li .text {

@@ -68,9 +68,9 @@ export default class Sery extends Component {
 
         {this.renderSeryTitle()}
 
-        <div className="seryEachContainer">
+        <ul>
           {this.renderBooks()}
-        </div>
+        </ul>
         
         { this.props.currentUser ?
           <p className="addFormP">
