@@ -58,12 +58,12 @@ body {
 }
 
 .fa-check, .fa-asterisk, .fa-check-square, .fa-minus-square {
-  width: 2em;
+  width: 3em;
   cursor: pointer;
 }
 
 .bookHaveRead {
-  width: 2em;
+  width: 3em;
   display: inline;
 }
 
@@ -126,6 +126,7 @@ h1.seryTitle {
 
 h2.seryAuthor {
   font-weight: 600;
+  color: #444;
   margin-top: 0em;
   margin-bottom: 1em;
 }
