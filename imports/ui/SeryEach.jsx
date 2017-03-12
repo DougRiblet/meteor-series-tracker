@@ -16,14 +16,16 @@ export default class SeryEach extends Component {
   }
 
   render() {
-    let haveRead = this.props.book.haveRead ? `fa fa-check` : `fa fa-asterisk` ;
+    let hrfa = this.props.book.haveRead ? "fa fa-check-square" : "fa fa-minus-square";
+    let hrow = this.props.book.haveRead ? "seryEachItem hrow" : "seryEachItem";
     return (
-      <li>
-        <span onClick={this.handleIconClick}>
-          <i className={haveRead}></i>
+      <div className={hrow}>
+        <span className="bookHaveRead" onClick={this.handleIconClick}>
+          <i className={hrfa}></i>
         </span>
-        <span className="bookTitle">{this.props.book.title}</span> {this.props.book.year}
-      </li>
+        <span className="bookTitle">{this.props.book.title}</span>
+        <span className="bookYear">{this.props.book.year}</span>
+      </div>
     );
   }
 }

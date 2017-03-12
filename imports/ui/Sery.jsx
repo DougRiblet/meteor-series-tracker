@@ -32,7 +32,7 @@ export default class Sery extends Component {
 
   renderBooks() {
     if (this.props.onDisplay === "front") {
-      return <li></li>;
+      return "";
     } else {
       let seriesLive = this.props.seriesList.find(x => x._id === this.props.onDisplay);
       let volumes = seriesLive['volumes'].sort((x,y) => x.year - y.year);
@@ -44,10 +44,15 @@ export default class Sery extends Component {
 
   renderSeryTitle() {
     if (this.props.onDisplay === "front") {
-      return `Series Tracker App`;
+      return <h1 className="seryTitle">Series Tracker App</h1>;
     } else {
       let seriesLive = this.props.seriesList.find(x => x._id === this.props.onDisplay);
-      return `${seriesLive.seriesTitle} by ${seriesLive.author}`;
+      return (
+        <div>
+          <h1 className="seryTitle">{seriesLive.seriesTitle}</h1>
+          <h2 className="seryAuthor">{seriesLive.author}</h2>
+        </div>
+      );;
     }
   }
 
@@ -61,18 +66,18 @@ export default class Sery extends Component {
     return (
       <div className="sery">
 
-        <h1 className="seryTitle">{this.renderSeryTitle()}</h1>
+        {this.renderSeryTitle()}
 
-        <ul>
+        <div className="seryEachContainer">
           {this.renderBooks()}
-        </ul>
+        </div>
         
         { this.props.currentUser ?
           <p className="addFormP">
             <span className="addFormHead" onClick={this.toggleShowAddTitle}>
               Add New Title <i className={caret}></i>
             </span>
-          </p>: ''
+          </p> : ''
         }
 
         { this.props.currentUser && this.state.showAddTitle ?

@@ -22,7 +22,7 @@ class App extends Component {
     return (
       <div className="container">
         <header>
-          <h1>Series Tracker</h1>
+          <h1 className="headerLogo">Series Tracker</h1>
           <AccountsUIWrapper />
         </header>
         <main>

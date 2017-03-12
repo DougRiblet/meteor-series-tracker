@@ -25,7 +25,7 @@ body {
 }
 
 .catalog {
-  width: 30%;
+  width: 25%;
   padding: 12px;
   margin: 12px 2px;
   float: left;
@@ -37,22 +37,43 @@ body {
 }
 
 .sery {
-  width: 60%;
+  width: 65%;
   margin: 12px 2px;
-  padding: 12px;
+  padding: 12px 24px;
   float: left;
   min-height: 70vh;
   border-left: 2px solid #2c4959;
 }
 
-.fa-check, .fa-asterisk {
+.seryEachItem {
+  display: block;
+  margin: 0;
+  padding: 6px 12px;
+}
+
+.hrow {
+  background-color: #eeb;
+}
+
+.fa-check, .fa-asterisk, .fa-check-square, .fa-minus-square {
   width: 2em;
   cursor: pointer;
 }
+
+.bookHaveRead {
+  width: 2em;
+  display: inline;
+}
+
 .bookTitle {
   font-weight: 600;
   font-size: 18px;
   margin-right: .5em;
+  display: inline;
+}
+
+.bookYear {
+  display: inline;
 }
 
 .addFormP {
@@ -85,13 +106,25 @@ header {
   cursor: pointer;
 }
 
-h1 {
+h1.headerLogo {
   font-weight: 900;
   color: #bcd;
   margin: 0;
   margin-bottom: 10px;
   display: inline-block;
   margin-right: 1em;
+}
+
+h1.seryTitle {
+  font-weight: 900;
+  color: #416174;
+  margin-bottom: 0em;
+  margin-top: .5em;
+}
+
+h2.seryAuthor {
+  font-weight: 600;
+  margin-top: 0em;
 }
  
 form {
