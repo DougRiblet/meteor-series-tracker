@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
+import { Random } from 'meteor/random';
  
 export const SeriesList = new Mongo.Collection('seriesList');
 
@@ -34,6 +35,7 @@ Meteor.methods({
       {$addToSet: 
         {volumes: 
           {
+            _id: Random.id(),
             title,
             year,
             haveRead: false
@@ -42,7 +44,7 @@ Meteor.methods({
       }
     );
   },
-  'seriesList.updateHaveRead'(seriesID, volumeTitle, newHaveRead) {
+  'seriesList.updateHaveRead'(seriesID, volumeID, newHaveRead) {
     check(newHaveRead, Boolean);
 
     if (! this.userId) {
@@ -50,7 +52,7 @@ Meteor.methods({
     }
 
     SeriesList.update(
-      {_id: seriesID, "volumes.title": volumeTitle},
+      {_id: seriesID, "volumes._id": volumeID},
       {$set: {"volumes.$.haveRead": newHaveRead}}
     );
 

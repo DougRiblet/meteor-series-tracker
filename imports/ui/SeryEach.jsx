@@ -11,8 +11,8 @@ export default class SeryEach extends Component {
   handleIconClick() {
     const newHaveRead = !this.props.book.haveRead;
     const seriesID = this.props.onDisplay;
-    const volumeTitle = this.props.book.title;
-    Meteor.call('seriesList.updateHaveRead', seriesID, volumeTitle, newHaveRead);
+    const volumeID = this.props.book._id;
+    Meteor.call('seriesList.updateHaveRead', seriesID, volumeID, newHaveRead);
   }
 
   render() {

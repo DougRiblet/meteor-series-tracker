@@ -37,7 +37,7 @@ export default class Sery extends Component {
       let seriesLive = this.props.seriesList.find(x => x._id === this.props.onDisplay);
       let volumes = seriesLive['volumes'].sort((x,y) => x.year - y.year);
       return volumes.map((book) => (
-        <SeryEach key={book.title} book={book} onDisplay={this.props.onDisplay} />
+        <SeryEach key={book._id} book={book} onDisplay={this.props.onDisplay} />
       ));
     }
   }
