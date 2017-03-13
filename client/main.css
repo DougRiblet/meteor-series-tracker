@@ -79,6 +79,17 @@ body {
   display: inline;
 }
 
+.bookDelete {
+  display: inline;
+  margin-left: 1.5em;
+  color: #eee;
+  cursor: pointer;
+}
+
+.bookDelete:hover {
+  color: red;
+}
+
 .addFormP {
   margin-left: 1.25em;
   margin-top: 3em;

@@ -44,6 +44,25 @@ Meteor.methods({
       }
     );
   },
+  'seriesList.deleteVolume'(seriesID, volumeID) {
+    check(seriesID, String);
+    check(volumeID, String);
+
+    if (! this.userId) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+    SeriesList.update(
+      {_id: seriesID},
+      {$pull: 
+        {volumes: 
+          {
+            _id: volumeID
+          }
+        }
+      }
+    );
+  },
   'seriesList.updateHaveRead'(seriesID, volumeID, newHaveRead) {
     check(newHaveRead, Boolean);
 

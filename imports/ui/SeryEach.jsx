@@ -6,6 +6,7 @@ export default class SeryEach extends Component {
     super(props);
     this.state = {};
     this.handleIconClick = this.handleIconClick.bind(this);
+    this.handleDeleteBook = this.handleDeleteBook.bind(this);
   }
 
   handleIconClick() {
@@ -13,6 +14,12 @@ export default class SeryEach extends Component {
     const seriesID = this.props.onDisplay;
     const volumeID = this.props.book._id;
     Meteor.call('seriesList.updateHaveRead', seriesID, volumeID, newHaveRead);
+  }
+
+  handleDeleteBook() {
+    const seriesID = this.props.onDisplay;
+    const volumeID = this.props.book._id;
+    Meteor.call('seriesList.deleteVolume', seriesID, volumeID);
   }
 
   render() {
@@ -25,6 +32,9 @@ export default class SeryEach extends Component {
         </span>
         <span className="bookTitle">{this.props.book.title}</span>
         <span className="bookYear">{this.props.book.year}</span>
+        <span className="bookDelete" onClick={this.handleDeleteBook}>
+          <i className="fa fa-times"></i>
+        </span>
       </li>
     );
   }
